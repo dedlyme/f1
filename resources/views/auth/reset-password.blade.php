@@ -1,4 +1,5 @@
 <x-guest-layout>
+<script src="https://cdn.tailwindcss.com"></script>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 

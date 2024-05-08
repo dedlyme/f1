@@ -1,7 +1,11 @@
+<!-- Guest Layout Component -->
 <x-guest-layout>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <!-- Login Form -->
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -32,13 +36,22 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
+        <!-- Forgot Password Link -->
+        <div class="mt-4">
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
                     {{ __('Forgot your password?') }}
                 </a>
             @endif
+        </div>
 
+        <!-- Register Button -->
+        <div class="mt-4">
+            <a href="{{ route('register') }}" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ __('Register') }}</a>
+        </div>
+
+        <!-- Login Button -->
+        <div class="flex items-center justify-end mt-4">
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
