@@ -21,11 +21,11 @@
             }
         });
 
-        function appendMessage(message) {
+        function appendMessage(sender, message) {
             var chatBox = document.getElementById('chatBox');
             var newMessage = document.createElement('div');
             newMessage.classList.add('chat-message');
-            newMessage.textContent = message;
+            newMessage.textContent = sender + ': ' + message;
             chatBox.appendChild(newMessage);
             chatBox.scrollTop = chatBox.scrollHeight;
 
@@ -36,8 +36,9 @@
         function sendMessage() {
             var messageInput = document.getElementById('messageInput');
             var message = messageInput.value.trim();
-            if (message !== '') {
-                appendMessage('You: ' + message);
+            var username = "{{ auth()->user()->name }}"; // Get the authenticated user's name from Laravel
+            if (message !== '' && username) {
+                appendMessage(username, message);
                 // Here you would send the message to the server for processing or storage
                 messageInput.value = '';
             }

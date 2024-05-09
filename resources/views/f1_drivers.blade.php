@@ -1,32 +1,29 @@
+<x-layout>
+    <x-slot name="heading">
+        Current F1 Drivers
+    </x-slot>
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Current F1 Drivers</title>
-</head>
-<body>
-    <h1>Current F1 Drivers</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Driver</th>
-                <th>Nationality</th>
-                <th>DOB</th>
-                <th>Permanent Number</th>
-                <th>...</th> <!-- Add more columns as needed -->
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($drivers as $driver)
+    <div class="max-w-4xl mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-4">Current F1 Drivers</h1>
+        <table class="min-w-full">
+            <thead>
                 <tr>
-                    <td>{{ $driver['givenName'] }} {{ $driver['familyName'] }}</td>
-                    <td>{{ $driver['nationality'] }}</td>
-                    <td>{{ $driver['dateOfBirth'] }}</td>
-                    <td>{{ $driver['permanentNumber'] }}</td>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Driver</th>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Nationality</th>
+                    <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">DOB</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @foreach($drivers as $driver)
+                <tr>
+                    <td class="px-6 py-4 whitespace-no-wrap">{{ $driver['givenName'] }} {{ $driver['familyName'] }}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap">{{ $driver['nationality'] }}</td>
+                    <td class="px-6 py-4 whitespace-no-wrap">{{ $driver['dateOfBirth'] }}</td>
                     <td>...</td> <!-- Add more columns as needed -->
                 </tr>
-            @endforeach
-        </tbody>
-    </table>
-</body>
-</html>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+</x-layout>
