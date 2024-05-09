@@ -6,7 +6,7 @@ use App\Http\Controllers\F1DriversController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\F1HistoryController;
-
+use App\Http\Controllers\UserController;
 
 
 
@@ -16,7 +16,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contacts', [ContactsController::class, 'index'])->name('contacts');
     Route::get('/drivers', [F1DriversController::class, 'index'])->name('drivers');
 });
+// In your web.php routes file
 
+
+
+Route::get('/user-info', [UserController::class, 'userInfo'])->name('user.info');
 
 
 Route::get('/dashboard', function () {
